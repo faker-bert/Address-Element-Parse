@@ -66,7 +66,7 @@ def collate_fn(batch):
         pad_len = max_len - len(item[0])
 
         address_es.append(item[0] + [config.WORD_PAD_ID] * pad_len)
-        target_s.append(item[1] + [22] * pad_len)
+        target_s.append(item[1] + [config.LABEL_O_ID] * pad_len)
         # for crf calc
         mask.append([1] * len(item[0]) + [0] * pad_len)
     return torch.tensor(address_es), torch.tensor(target_s), torch.tensor(mask).bool()

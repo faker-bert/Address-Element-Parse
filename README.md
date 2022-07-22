@@ -33,3 +33,16 @@
 
 ### TODO
 
+## 执行顺序
+
+将训练集命名为train.txt,验证集命名为test.txt,并将这两个文件置于./output/下
+
+先执行data_pre_process.py文件，生成词缓存与标签缓存，实际上是保留唯一映射关系
+
+然后根据标签缓存中的O的对应数字修改config文件中的LABEL_O_ID以及VOCAB_SIZE与TARGET_SIZE
+
+接着执行train.py文件，模型会保存在./output/model/文件夹（如果没有就新建一下）下
+
+执行validate.py文件即可通过验证集预估模型的泛化性能
+
+最后通过predict.py文件可进行预测

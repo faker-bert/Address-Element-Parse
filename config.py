@@ -25,6 +25,8 @@ WORD_UNK = '<UNK>'
 WORD_UNK_ID = 1
 # vocab list size
 VOCAB_SIZE = 2309
+# O id
+LABEL_O_ID = 22
 
 # max seg size
 SEG_MAX_LEN = 50
