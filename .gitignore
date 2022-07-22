@@ -1,3 +1,5 @@
 output/model
 
 loss_record.txt
+
+__pycache__/
