@@ -74,11 +74,8 @@ def collate_fn(batch):
 
 if __name__ == '__main__':
     for addresses, targets, masks in data.DataLoader(Dataset(), batch_size=10, shuffle=True, collate_fn=collate_fn):
-        # collate_fn
-        ...
-        print(addresses)
-        print(targets)
-        print(masks)
-    # for i in Dataset():
-    #     # print(i)
+        print(addresses.shape)
+        print(targets.shape)
+        print(masks.shape)
+    print(get_vocab_id())
 

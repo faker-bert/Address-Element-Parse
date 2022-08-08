@@ -1,6 +1,8 @@
+import torch.cuda
 from utils import *
 from model import *
 from config import *
+device = 'cuda' if torch.cuda.is_available() else 'cpu'
 
 
 def extract(label, text):
@@ -20,13 +22,12 @@ def extract(label, text):
     return res
 
 
-if __name__ == '__main__':
-    text = '福建省泉州丰泽区城华北路华侨大学紫荆园35#611'
+def predict(text):
     _, vocab2id = get_vocab_id()
-    input = torch.tensor([[vocab2id.get(w, WORD_UNK_ID) for w in text]]).to('cuda')
-    mask = torch.tensor([[1] * len(text)]).bool().to('cuda')
+    input = torch.tensor([[vocab2id.get(w, WORD_UNK_ID) for w in text]]).to(device)
+    mask = torch.tensor([[1] * len(text)]).bool().to(device)
 
-    model = torch.load(MODEL_PATH + 'model_11.pth').to('cuda')
+    model = torch.load(MODEL_PATH + 'model_11.pth').to(device)
     y_pred = model(input, mask)
     id2label, _ = get_label_id()
 

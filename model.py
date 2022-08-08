@@ -13,7 +13,8 @@ class Model(nn.Module):
             batch_first=True,
             bidirectional=True
         )
-        # map to label   2*config.HIDDEN_SIZE due to bi-lstm
+        # map to label 2*config.HIDDEN_SIZE due to bi-lstm
+        # Maps the output of the LSTM into tag space.
         self.linear = nn.Linear(2*config.HIDDEN_SIZE, config.TARGET_SIZE)
 
         self.crf = CRF(config.TARGET_SIZE, batch_first=True)
